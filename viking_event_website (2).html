@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5JX36WKC');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viking Age — Norse Festival</title>
+  <style>
+    :root {
+      --bg: #10110f;
+      --panel: rgba(24, 26, 22, 0.92);
+      --gold: #d5a64b;
+      --gold-light: #f2d28a;
+      --text: #f4f0e6;
+      --muted: #c0b9a9;
+      --line: rgba(213, 166, 75, .35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+	
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+	.hero > :not(.hero-video) {
+      position: relative;
+      z-index: 2;
+    }
+	.hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero {
+      min-height: 78vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem max(7vw, 1.5rem);
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(8, 10, 9, .95) 0%, rgba(8, 10, 9, .72) 52%, rgba(8, 10, 9, .28) 100%),
+        linear-gradient(0deg, var(--bg), transparent 35%),
+        url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=2000&q=85") center/cover;
+      border-bottom: 1px solid var(--line);
+    }
+	
+    .topline {
+      position: absolute;
+      top: -2rem;
+      left: max(0vw, 0.5rem);
+      right: max(10vw, 1.5rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .8rem;
+      color: var(--gold-light);
+    }
+
+    .brand { 
+	  display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      color: var(--gold-light);
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+	}
+	
+	.brand-logo {
+	   position: absolute;
+       top: -25px;
+       right: -10px;
+       width: 50px;
+       height: 50px;
+       object-fit: contain;
+       z-index: 10;
+	   border-radius: 50%;
+    }
+	
+	.brand-logos {
+	  position: absolute;
+       top: -25px;
+       right: 40px;
+       width: 50px;
+       height: 50px;
+       object-fit: contain;
+       z-index: 10;
+	   border-radius: 50%;
+    }
+    .rune { color: var(--gold); font-size: 1.3rem; margin-right: .5rem; }
+	
+
+    .eyebrow {
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: .24em;
+      font-size: .8rem;
+      font-weight: bold;
+    }
+
+     h1 {
+      max-width: 780px;
+      margin: .7rem 0 1rem;
+      font-size: clamp(3.3rem, 9vw, 7.5rem);
+      line-height: .95;
+      letter-spacing: -.04em;
+      text-transform: uppercase;
+    }
+
+    h1 span { color: var(--gold); }
+    .hero p {
+      max-width: 570px;
+      color: #e0d9ca;
+      font-size: 1.15rem;
+    }
+
+    .cta {
+      display: inline-block;
+      width: fit-content;
+      margin-top: 1rem;
+      padding: .85rem 1.35rem;
+      color: #15140f;
+      background: var(--gold);
+      border: 1px solid var(--gold-light);
+      text-decoration: none;
+      text-transform: uppercase;
+      font: bold .82rem Arial, sans-serif;
+      letter-spacing: .1em;
+      transition: .2s ease;
+    }
+    .cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .tabs-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15, 16, 14, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .tabs {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      gap: .25rem;
+      padding: .65rem 1rem;
+    }
+
+    .tab {
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      padding: .8rem 1.15rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font: bold .90rem Arial, sans-serif;
+      transition: .2s ease;
+    }
+    .tab:hover, .tab.active {
+      color: var(--gold-light);
+      border-color: var(--line);
+      background: rgba(213, 166, 75, .08);
+    }
+
+    main { max-width: 1100px; margin: auto; padding: 3.5rem 1.5rem 5rem; }
+    .panel { display: none; animation: appear .35s ease; }
+    .panel.active { display: block; }
+    @keyframes appear { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .section-kicker {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font: bold .75rem Arial, sans-serif;
+    }
+    h2 { margin: .35rem 0 1rem; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.1; }
+    .intro { max-width: 720px; color: var(--muted); font-size: 1.08rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 1.4rem;
+    }
+    .card .symbol { font-size: 1.8rem; color: var(--gold); }
+    .card h3 { margin: .5rem 0; color: var(--gold-light); font-size: 1.35rem; }
+    .card p { color: var(--muted); margin-bottom: 0; }
+
+    .feature {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border-left: 3px solid var(--gold);
+      background: linear-gradient(90deg, rgba(213,166,75,.1), transparent);
+    }
+    .feature strong { color: var(--gold-light); }
+
+    .schedule { margin-top: 2rem; border-top: 1px solid var(--line); }
+    .event-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 1.25rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .event-time { color: var(--gold-light); font-weight: bold; }
+    .event-row h3 { margin: 0; }
+    .event-row p { margin: .25rem 0 0; color: var(--muted); }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .contact-form { display: grid; gap: 1rem; }
+    label { display: grid; gap: .35rem; color: var(--gold-light); font-size: .95rem; }
+    input, textarea, select {
+      width: 100%;
+      padding: .85rem;
+      border: 1px solid var(--line);
+      background: #171915;
+      color: var(--text);
+      font: inherit;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    button.cta { cursor: pointer; }
+    .note { color: var(--muted); font-size: .9rem; }
+
+    footer {
+      text-align: center;
+      border-top: 1px solid var(--line);
+      padding: 1.5rem;
+      color: #9c9587;
+      font-size: .85rem;
+    }
+	
+    @media (max-width: 760px) {
+      .hero { min-height: 70vh; padding-top: 7rem; }
+      .tabs { justify-content: flex-start; overflow-x: auto; }
+      .tab { flex: 0 0 auto; padding: .75rem .85rem; }
+      .grid { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .event-row { grid-template-columns: 1fr; gap: .2rem; }
+      .topline { font-size: .68rem; letter-spacing: .1em; }
+    }
+  </style>
+</head>
+ 
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5JX36WKC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <header class="hero" id="home">
+    <video class="hero-video" autoplay muted loop playsinline poster="WhatsApp Video 2026-10-23 at 20.36.30.mp4" aria-hidden="true">
+      <source src="Sons of Valhalla  Epic Viking War Drums & Nordic Battle Music (AI Music Video) - Sounds of Hiraeth - AI Music (360p, h264).mp4" type="video/mp4">
+    </video>
+    <div class="topline">
+      <div class="brand"><span class="rune"></span></div>
+      <div></div>
+	  <img src="images (2).jpeg" alt="viking logo" class="brand-logo">
+	  <img src="WhatsApp Image 2026-10-23 at 22.41.01.jpeg" alt="viking logo" class="brand-logos">
+    </div>
+    <h1><br><span>VIKING RAGNARöK</span></h1>
+	<p>LEGENDS RISE BEYOND TIME</p>
+	<h2><br><span>TOUR INVITATION AWAITS</span></h2>
+    <p>Step into a legendary evening inspired by the spirit of the viking.</p>
+    <a class="cta" href="#tabs" onclick="showTab('about'); return false;">Explore the festival</a>
+  </header>
+
+  <nav class="tabs-wrap" id="tabs" aria-label="Main navigation">
+    <div class="tabs" role="tablist">
+      <button class="tab active" role="tab" aria-selected="true" data-tab="about">About</button>
+      <button class="tab">
+	     <a href="https://docs.google.com/forms/d/e/1FAIpQLScP-U6Mur_-xjXFzR2qwS16G4x-nXnCcawfxdVjT77KLqtpbw/viewform?usp=publish-editor" class="tab">
+           REGISTRATION
+         </a>
+	  </button>
+	  
+      <button class="tab">
+	     <a href="https://docs.google.com/forms/d/e/1FAIpQLScoHp1-FFnke5g_lDiTE80QS81wQSDUxDtcn05AUOs2LT-T0w/viewform?usp=dialog" class="tab">
+           PAYMENT
+         </a>
+	  </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="contact">Contact</button>
+    </div>
+  </nav>
+ 
+  <main>
+    <section class="panel" id="about" role="tabpanel">
+      <h2>EVENT DETAILS.</h2>
+      <p class="intro">Step into a legendary night at Viking Ragnarök 2026, inspired by Norse mythology, Viking warriors, and ancient legends. Join us for an unforgettable evening of celebration, entertainment, and fellowship.</p>
+      <div class="grid">
+        <article class="card"><div class="symbol">📌</div><h3>DATE</h3><p>04 November 2026</p></article>
+        <article class="card"><div class="symbol">📍</div><h3>VENUE</h3><p>FMS 11, Faculty of Management Studies, Rajarata University of Sri Lanka.</p></article>
+        <article class="card"><div class="symbol">⏳</div><h3>TIME</h3><p>7.00 P.M TO 10.00 P.M</p></article>
+		<article class="card"><div class="symbol">🎟️</div><h3>TICKET  PRICE</h3><p>LKR 1,500 per person.</p></article>
+	    <article class="card"><div class="symbol">🎀</div><h3>Dress Code</h3><p>Come dressed in Viking-inspired attire and be part of the legendary experience!</p></article>
+		<article class="card"><div class="symbol">⚔️</div><h3>EVENT HIGHLIGHTS</h3><p>Viking-inspired atmosphere.</p><p>Viking-themed dining experience.</p><p>Entertainment and celebration.</p><p>Fellowship and unforgettable memories.</p><p>Viking photo experience.</p></article></div>
+
+    </section>
+
+    <section class="panel" id="REGISTRATION" role="tabpanel">
+      <div class="section-kicker">Join the adventure</div>
+      <h2>There is a saga for everyone.</h2>
+      <p class="intro">From the roar of the arena to the warmth of the feast hall, choose your adventure and make the day your own.</p>
+      <div class="grid">
+        <article class="card"><div class="symbol">⚔</div><h3>Combat Displays</h3><p>Watch staged swordplay and historical-inspired demonstrations performed by trained participants.</p></article>
+        <article class="card"><div class="symbol">🎯</div><h3>Clan Challenges</h3><p>Try friendly strength, skill, and teamwork games designed for festival guests.</p></article>
+        <article class="card"><div class="symbol">♫</div><h3>Norse Music</h3><p>Enjoy live folk-inspired music, rhythmic drums, and tales from the skalds.</p></article>
+        <article class="card"><div class="symbol">ᚠ</div><h3>Craft Village</h3><p>Browse handmade goods and explore crafts inspired by the Viking world.</p></article>
+        <article class="card"><div class="symbol">♨</div><h3>Feast Hall</h3><p>Take a break with festival food and drinks from our gathering vendors.</p></article>
+        <article class="card"><div class="symbol">✧</div><h3>Myth & Storytelling</h3><p>Gather around for Norse legends, heroic journeys, and tales of the gods.</p></article>
+      </div>
+    </section>
+	
+	<section class="panel" id="REGISTRATION" role="tabpanel">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScP-U6Mur_-xjXFzR2qwS16G4x-nXnCcawfxdVjT77KLqtpbw/viewform?usp=publish-editor"
+         class="tab"
+         target="_blank"
+         rel="noopener noreferrer">
+         REGISTRATION
+      </a>
+    </section>
+	
+	<section class="panel" id="PAYMENT" role="tabpanel">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScoHp1-FFnke5g_lDiTE80QS81wQSDUxDtcn05AUOs2LT-T0w/viewform?usp=dialog"
+         class="tab"
+         target="_blank"
+         rel="noopener noreferrer">
+         PAYMENT
+      </a>
+    </section>
+
+    <section class="panel" id="contact" role="tabpanel">
+      <div class="section-kicker">Join the gathering</div>
+      <h2>Save your place at the feast.</h2>
+      <p class="intro">Questions about tickets, group bookings, stalls, or volunteering? Send us a message and our event team can follow up.</p>
+      <div class="contact-layout">
+        <div>
+          <div class="feature"><strong>Event:</strong> Viking Ragnarök<br><strong>Date:</strong>04 November 2026<br><strong>Location:</strong>FMS 11, Faculty of Management Studies, Rajarata University of Sri Lanka. <br><strong>Email:</strong>ragnarok.event2026@gmail.com</div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <label>Your name<input name="name" type="text" placeholder="Enter your name" required></label>
+          <label>Email address<input name="email" type="email" placeholder="you@example.com" required></label>
+          <label>What are you interested in?
+            <select name="interest">
+              <option>Festival tickets</option><option>Group booking</option>
+            </select>
+          </label>
+          <label>Message<textarea name="message" placeholder="Write your message..." required></textarea></label>
+          <button class="cta" type="submit">Prepare message</button>
+		  <p>Event cordinator :- Mathisha Siriwardana</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>ᚠ &nbsp; VIKING AGE FESTIVAL &nbsp; ᚠ<br>Built for adventure, stories, and fellowship.</footer>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.panel');
+
+    function showTab(id) {
+      const targetId = id === 'home' ? 'home-panel' : id;
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === targetId));
+      tabs.forEach(tab => {
+        const active = tab.dataset.tab === targetId;
+        tab.classList.toggle('active', active);
+        tab.setAttribute('aria-selected', String(active));
+      });
+      document.querySelector('#tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    tabs.forEach(tab => tab.addEventListener('click', () => showTab(tab.dataset.tab)));
+
+    document.querySelector('#contactForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      document.querySelector('#formMessage').textContent =
+        'Thanks! This demo form is ready for connecting to an email service or backend.';
+    });
+  </script>
+</body>
+</html>
