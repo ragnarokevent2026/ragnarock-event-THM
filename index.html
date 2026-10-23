@@ -377,20 +377,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div>
           <div class="feature"><strong>Event:</strong> Viking Ragnarök<br><strong>Date:</strong>04 November 2026<br><strong>Location:</strong>FMS 11, Faculty of Management Studies, Rajarata University of Sri Lanka. <br><strong>Email:</strong>ragnarok.event2026@gmail.com</div>
         </div>
-        <form class="contact-form" action="https://formsubmit.co/ragnarok.event2026@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New message from Viking Ragnarök website">
-          <input type="hidden" name="_template" value="table">
-          <label>Your name<input name="name" type="text" placeholder="Enter your name" required></label>
-          <label>Email address<input name="_replyto" type="email" placeholder="you@example.com" required></label>
-          <label>What are you interested in?
-            <select name="interest">
-              <option>Festival tickets</option><option>Group booking</option>
-            </select>
-          </label>
-          <label>Message<textarea name="message" placeholder="Write your message..." required></textarea></label>
-          <button class="cta" type="submit">Send message</button>
-		  <p>Event coordinator: Mathisha Siriwardana</p>
-        </form>
+        <form class="contact-form"
+      action="https://api.web3forms.com/submit"
+      method="POST">
+
+  <input type="hidden" name="access_key"
+         value="990600e9-8543-4166-bf0d-f3c42b277d49">
+
+  <label>Your name
+    <input type="text" name="name"
+           placeholder="Enter your name" required>
+  </label>
+
+  <label>Email address
+    <input type="email" name="email"
+           placeholder="you@example.com" required>
+  </label>
+
+  <label>What are you interested in?
+    <select name="interest">
+      <option>Festival tickets</option>
+      <option>Group booking</option>
+    </select>
+  </label>
+
+  <label>Message
+    <textarea name="message"
+              placeholder="Write your message..." required></textarea>
+  </label>
+
+  <button class="cta" type="submit">Send message</button>
+
+  <p>Event coordinator: Mathisha Siriwardana</p>
+</form>
       </div>
     </section>
   </main>
