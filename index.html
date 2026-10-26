@@ -524,48 +524,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <br>2023/2024 batch Tourism and Hospitality Management University of Rajarata</footer>
 
   <script>
-    const tabs = document.querySelectorAll('.tab');
+    const tabs = document.querySelectorAll('.tab[data-tab]');
     const panels = document.querySelectorAll('.panel');
 
-    function showTab(id) {
-      const targetId = id === 'home' ? 'home-panel' : id;
-      panels.forEach(panel => panel.classList.toggle('active', panel.id === targetId));
-      tabs.forEach(tab => {
-        const active = tab.dataset.tab === targetId;
-        tab.classList.toggle('active', active);
-        tab.setAttribute('aria-selected', String(active));
-      });
-      document.querySelector('#tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-const VIP_CODE = "22032";
+    const VIP_CODE = "22032";
+    let vipUnlocked = false;
 
-    document.getElementById("VIP").addEventListener("click", function () {
-    const enteredCode = prompt("Enter your 4-digit VIP code:");
-
-    if (enteredCode === VIP_CODE) {
-     showTab("vip");
-    } else {
-     alert("Incorrect code! Access denied.");
-    }
-	
-    if (enteredCode === null) {
-        return; // User cancelled
+function showTab(id) {
+    // Block VIP access unless the password is correct
+    if (id === "VIP" && !vipUnlocked) {
+        return;
     }
 
-    if (enteredCode === VIP_CODE) {
-        showTab("vip");
-        this.classList.add("active");
-    } else {
-        alert("Incorrect code! Access denied.");
-    }
+    panels.forEach(panel => {
+        panel.classList.toggle("active", panel.id === id);
     });
-	  
-    tabs.forEach(tab => tab.addEventListener('click', () => showTab(tab.dataset.tab)));
 
-    document.querySelector('#contactForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-      document.querySelector('#formMessage').textContent =
-        'Thanks! This demo form is ready for connecting to an email service or backend.';
+    tabs.forEach(tab => {
+        const active = tab.dataset.tab === id;
+        tab.classList.toggle("active", active);
+        tab.setAttribute("aria-selected", String(active));
+    });
+
+    const vipButton = document.getElementById("VIP");
+    vipButton.classList.toggle("active", id === "vip");
+    vipButton.setAttribute("aria-selected", String(id === "VIP"));
+
+    document.querySelector("#tabs").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+// Normal navigation
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        showTab(tab.dataset.tab);
+    });
+});
+
+// VIP password protection
+document.getElementById("VIP").addEventListener("click", () => {
+    const enteredCode = prompt("Enter your VIP password:");
+
+    if (enteredCode === null) {
+        // Cancelled: keep VIP closed if it was not already unlocked
+        if (!vipUnlocked) {
+            showTab("about");
+        }
+        return;
+    }
+
+    if (enteredCode.trim() === VIP_CODE) {
+        vipUnlocked = true;
+        showTab("VIP");
+    } else {
+        vipUnlocked = false;
+        showTab("about");
+        alert("Incorrect password! Access denied.");
+    }
     });
   </script>
 </body>
