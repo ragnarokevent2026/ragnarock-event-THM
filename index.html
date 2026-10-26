@@ -270,7 +270,84 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       color: #9c9587;
       font-size: .85rem;
     }
+
+   #vip {
+     min-height: 70vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    }
+
+    .vip-welcome {
+    width: 100%;
+    min-height: 450px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 30px 20px;
+    border: 2px solid #d5a64b;
+    background: #10110f;
+
+    /* Gold glowing box */
+    box-shadow:
+        0 0 15px #d5a64b,
+        0 0 30px rgba(213, 166, 75, 0.7),
+        0 0 50px rgba(213, 166, 75, 0.4);
+
+    animation: vipFlash 1.2s infinite alternate;
+}
+
+/* Flashing glow animation */
+@keyframes vipFlash {
+    from {
+        box-shadow:
+            0 0 10px #d5a64b,
+            0 0 20px rgba(213, 166, 75, 0.5);
+    }
+
+    to {
+        box-shadow:
+            0 0 25px #f2d28a,
+            0 0 45px rgba(242, 210, 138, 0.8),
+            0 0 65px rgba(213, 166, 75, 0.5);
+    }
+}
+
+    .vip-welcome h1 {
+     margin: 0 0 20px;
+     text-align: center;
+     color: #f2d28a;
+     font-size: clamp(1rem, 5vw, 5rem);
+     text-shadow: 0 0 15px #d5a64b;
+    }
 	
+	.vip-welcome h5 {
+     margin: 0 0 20px;
+     text-align: center;
+     color: #f2d28a;
+     font-size: clamp(1.5rem, 3vw, 3rem);
+     text-shadow: 0 0 15px #d5a64b;
+    }
+
+    .vip-welcome p {
+     text-align: center;
+     color: #f4f0e6;
+     font-size: 1.5rem;
+    }
+	
+	.schedule {
+     text-align: center;	
+	 margin-top: 2rem; 
+	 border-top: 1px solid var(--line);
+     white-space: nowrap;
+     font-size: 1.3rem;	 
+	}
+	  
     @media (max-width: 760px) {
       .hero { min-height: 70vh; padding-top: 7rem; }
       .tabs { justify-content: flex-start; overflow-x: auto; }
@@ -308,6 +385,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <nav class="tabs-wrap" id="tabs" aria-label="Main navigation">
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="about">About</button>
+	  <button class="tab" id="VIP" role="tab" aria-selected="false" data-tab="VIP">VIP REGISTRATION</button>
       <button class="tab" id="REGISTRATION">
 	     <a href="https://docs.google.com/forms/d/e/1FAIpQLScP-U6Mur_-xjXFzR2qwS16G4x-nXnCcawfxdVjT77KLqtpbw/viewform?usp=publish-editor" 
 			 class="tab"
@@ -349,6 +427,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<article class="card"><div class="symbol">⚔️</div><h3>EVENT HIGHLIGHTS</h3><p>Viking-inspired atmosphere.</p><p>Viking-themed dining experience.</p><p>Entertainment and celebration.</p><p>Fellowship and unforgettable memories.</p><p>Viking photo experience.</p></article></div>
 
     </section>
+
+	<section class="panel" id="VIP" role="tabpanel">
+      <div class="vip-welcome">
+        <h1>⚔ WELCOME ⚔</h1>
+		<h5>TO VIKING RAGNARöK 2026</h5>
+        <p>You are now part of the legend!</p>
+      </div>
+	  <div class="schedule">
+        <div class="event-row"><div><p>Click the button below to register, and click the Payment tab to make payments for any additional attendees.</p></div></div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVfGDSf8OtMoCLEosqbWn6bzglNd-4l5WaUAzQIQQMmhn3Xw/viewform?usp=publish-editor"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="cta">
+			 VIP REGISTRATION
+        </a>
+	</section>
 
     <section class="panel" id="REGISTRATION" role="tabpanel">
       <div class="section-kicker">Join the adventure</div>
@@ -443,7 +537,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
       document.querySelector('#tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+const VIP_CODE = "22032";
 
+    document.getElementById("VIP").addEventListener("click", function () {
+    const enteredCode = prompt("Enter your 4-digit VIP code:");
+
+    if (enteredCode === VIP_CODE) {
+     showTab("vip");
+    } else {
+     alert("Incorrect code! Access denied.");
+    }
+	
+    if (enteredCode === null) {
+        return; // User cancelled
+    }
+
+    if (enteredCode === VIP_CODE) {
+        showTab("vip");
+        this.classList.add("active");
+    } else {
+        alert("Incorrect code! Access denied.");
+    }
+    });
+	  
     tabs.forEach(tab => tab.addEventListener('click', () => showTab(tab.dataset.tab)));
 
     document.querySelector('#contactForm').addEventListener('submit', function (event) {
